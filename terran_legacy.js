@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Center the TL content
 // @author       Encoder0
-// @match        http://www.netnexus.com/tlclassic/
+// @match        http://www.netnexus.com/tlclassic/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=netnexus.com
 // @grant        none
 // ==/UserScript==
