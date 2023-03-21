@@ -28,9 +28,11 @@
     }
     // Change color of item text
     else if (window.location.pathname.includes("Main.cgi")){
-        let f = document.querySelector('font[color="blue"]');
-        if (f){
-            f.color = "pink";
+        let fonts = document.querySelectorAll('font[color="blue"]');
+        if (fonts.length > 0){
+            fonts.forEach(function (currentValue, currentIndex, listObj) {
+                currentValue.color = "pink";
+            });
         }
     }
 })();
