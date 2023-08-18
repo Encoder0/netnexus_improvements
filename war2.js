@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         War2 Keyboard Shortcut Improvements
-// @namespace    https://github.com/Encoder0/netnexus_enchancements
+// @namespace    https://github.com/Encoder0/netnexus_improvements
 // @version      0.1
 // @description  improves keyboard shortcuts
 // @author       Encoder0
