@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Terran Legacy Center Content
-// @namespace    https://github.com/Encoder0/netnexus_enchancements
+// @namespace    https://github.com/Encoder0/netnexus_improvements
 // @version      0.2
 // @description  Center the TL content
 // @author       Encoder0
@@ -26,13 +26,20 @@
         parentNode.prepend(leftNode);
         parentNode.append(rightNode);
     }
-    // Change color of item text
+    
     else if (window.location.pathname.includes("Main.cgi")){
+        // Change color of item text
         let fonts = document.querySelectorAll('font[color="blue"]');
         if (fonts.length > 0){
             fonts.forEach(function (currentValue, currentIndex, listObj) {
                 currentValue.color = "pink";
             });
+        }
+
+        // Set bank amount to current money always
+        let amount_input = document.querySelector("input[name='AMMOUNT']")
+        if (amount_input){
+            amount_input.value = document.querySelector("body > table:nth-child(2) > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(2) > td:nth-child(2)").innerText.replace('$','')
         }
     }
 })();
