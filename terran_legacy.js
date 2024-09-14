@@ -14,6 +14,10 @@
 (function() {
     'use strict';
 
+    function fixNum (num){
+        return Number(num.replace("$","")).toLocaleString()
+    }
+
     // Center the content with some empty pages on each side
     if (window.location.pathname == "/tlclassic/"){
         let parentNode = document.querySelector("html > frameset");
@@ -26,7 +30,8 @@
         parentNode.prepend(leftNode);
         parentNode.append(rightNode);
     }
-    
+
+
     else if (window.location.pathname.includes("Main.cgi")){
         // Change color of item text
         let fonts = document.querySelectorAll('font[color="blue"]');
@@ -41,5 +46,13 @@
         if (amount_input){
             amount_input.value = document.querySelector("body > table:nth-child(2) > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(2) > td:nth-child(2)").innerText.replace('$','')
         }
+        let stat_table = document.querySelector("table[width='260']")
+        let credit_node = stat_table.querySelector("tbody > tr:nth-child(2) > td:nth-child(2)")
+        credit_node.innerText = "$" + fixNum(credit_node.innerText) + ".00"
+        let bank_node = stat_table.querySelector("tbody > tr:nth-child(3) > td:nth-child(2)")
+        bank_node.innerText = "$" + fixNum(bank_node.innerText) + ".00"
+        let exp_node = stat_table.querySelector("tbody > tr:nth-child(8) > td:nth-child(2)")
+        let exp_arr = exp_node.innerText.split("/")
+        exp_node.innerText = exp_arr.map(fixNum).join("/")
     }
 })();
