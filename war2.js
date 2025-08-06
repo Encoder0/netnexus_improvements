@@ -12,8 +12,12 @@
 (function() {
     'use strict';
 
-    function KeyCheck(e)
-    {
+    function isBattleOver(){
+        var node = document.querySelector('a[href*="flee"]')
+        return node !== null && node.text == "Leave Battlefield"
+    }
+
+    function KeyCheck(e){
         var KeyID = (window.event) ? event.keyCode : e.keyCode;
         switch(KeyID)
         {
@@ -31,10 +35,14 @@
                 document.location = "http://war2.netnexus.com/game/index.php?direction=south";
                 break;
             case 65: // a
-                document.location = "http://war2.netnexus.com/game/index.php?baction=attack&type=weapon";
+                if (!isBattleOver()){
+                    document.location = "http://war2.netnexus.com/game/index.php?baction=attack&type=weapon";
+                }
                 break;
             case 81: // q
-                document.location = "http://war2.netnexus.com/game/index.php?baction=attack&type=spell&quickspell=yes";
+                if (!isBattleOver()){
+                    document.location = "http://war2.netnexus.com/game/index.php?baction=attack&type=spell&quickspell=yes";
+                }
                 break;
             case 69: // e
                 var pickup = document.querySelector('a[href*="pickup"]')
@@ -47,7 +55,10 @@
                 document.location = "http://war2.netnexus.com/game/index.php?action=flee";
                 break;
             case 70: // f
-                document.location = "http://war2.netnexus.com/game/index.php?action=battle";
+                if (!isBattleOver()){
+                    document.location = "http://war2.netnexus.com/game/index.php?action=battle";
+                }
+                break;
             break;
         }
     }
